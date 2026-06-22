@@ -4,6 +4,8 @@ Static launch site for OpenComputer background agents, focused on the Durable Ag
 
 The first target is a Show HN style launch page: concise proposition, concrete proof, and direct links to docs and examples.
 
+Live site: https://diggerhq.github.io/oc-bg-agents-site/
+
 ## Local Preview
 
 This is plain static HTML:
@@ -26,4 +28,4 @@ Then open `http://localhost:4173`.
 
 ## Deployment
 
-The repo is GitHub Pages compatible. Publish the repository root, or deploy the same files to Cloudflare Pages.
+The repo is published with GitHub Pages from `main` at `/`.

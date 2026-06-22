@@ -16,7 +16,6 @@ Your app handles product events. OpenComputer runs the durable background-agent 
 
 ## Links To Include
 
-- Site: to be filled after deploy.
+- Site: https://diggerhq.github.io/oc-bg-agents-site/
 - Docs: https://docs.opencomputer.dev/agent-sessions/overview
 - Example: https://github.com/diggerhq/demo-pr-review-agent
-
