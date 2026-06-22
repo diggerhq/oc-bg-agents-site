@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenComputer Background Agents</title>
+    <meta
+      name="description"
+      content="Durable background-agent sessions for apps that need streaming, steering, recovery, sandboxed execution, and webhook results."
+    >
+    <meta property="og:title" content="OpenComputer Background Agents">
+    <meta
+      property="og:description"
+      content="Your app handles product events. OpenComputer runs the durable agent session."
+    >
+    <meta property="og:type" content="website">
+    <link rel="icon" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="OpenComputer background agents home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>OpenComputer</span>
+        <span class="brand-suffix">Background Agents</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#example">Example</a>
+        <a href="#api">API</a>
+        <a href="#split">Architecture</a>
+        <a class="nav-cta" href="https://docs.opencomputer.dev/agent-sessions/overview">Docs</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="launch-label">Show HN draft</p>
+          <h1 id="hero-title">Run background agents as durable sessions.</h1>
+          <p class="hero-lede">
+            Define an agent, start a session, stream its ordered event log, steer it with new input,
+            and receive signed webhooks when results commit.
+          </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a class="button primary" href="https://docs.opencomputer.dev/agent-sessions/quickstart">Start with the docs</a>
+            <a class="button secondary" href="https://github.com/diggerhq/demo-pr-review-agent">View the PR reviewer</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Durable session object model">
+          <div class="panel-topline">
+            <span>Session object</span>
+            <span>live</span>
+          </div>
+          <pre class="object-model"><code>Session =
+  ordered event log
+  pinned agent snapshot
+  lifecycle state
+  scoped client access
+  webhook destinations</code></pre>
+          <div class="event-tape" aria-label="Example event sequence">
+            <div class="event-row"><span>01</span><strong>session.created</strong><em>queued</em></div>
+            <div class="event-row"><span>02</span><strong>turn.started</strong><em>lease claimed</em></div>
+            <div class="event-row"><span>09</span><strong>agent.message</strong><em>progress</em></div>
+            <div class="event-row"><span>42</span><strong>turn.completed</strong><em>webhook sent</em></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section tight" aria-labelledby="proposition-title">
+        <div class="proposition">
+          <h2 id="proposition-title">Your app handles product events. OpenComputer handles the run.</h2>
+          <p>
+            A background agent is not one model call. It is supervision, streaming,
+            recovery, sandbox isolation, and delivery after the user closes the tab.
+            Durable Agent Sessions put that substrate behind one API.
+          </p>
+        </div>
+      </section>
+
+      <section class="section proof" id="example" aria-labelledby="example-title">
+        <div class="section-heading">
+          <p class="section-kicker">Proof point</p>
+          <h2 id="example-title">The PR reviewer app has no queue, database, or resident worker.</h2>
+          <p>
+            It is a GitHub App deployed as a Cloudflare Worker. GitHub sends a PR event,
+            the app creates an OpenComputer session, and OpenComputer calls back when the review is ready.
+          </p>
+        </div>
+
+        <div class="flow-grid">
+          <div class="flow-column">
+            <h3>The app does the product-specific work</h3>
+            <ol class="flow-list">
+              <li>Verify the GitHub webhook.</li>
+              <li>Fetch PR metadata, changed files, and the diff.</li>
+              <li>Create a Durable Agent Session with routing metadata.</li>
+              <li>Update one sticky PR comment when OpenComputer calls back.</li>
+            </ol>
+          </div>
+          <div class="flow-column accent">
+            <h3>OpenComputer does the durable work</h3>
+            <ol class="flow-list">
+              <li>Run the agent in a managed runtime.</li>
+              <li>Let hands tools inspect the repo when available.</li>
+              <li>Record progress and completion in the session.</li>
+              <li>Deliver the completion webhook after the request is long gone.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="burden-title">
+        <div class="section-heading">
+          <p class="section-kicker">What you stop rebuilding</p>
+          <h2 id="burden-title">Most of a background agent is the system around it.</h2>
+        </div>
+
+        <div class="ledger" role="table" aria-label="Background agent infrastructure ledger">
+          <div class="ledger-row ledger-head" role="row">
+            <div role="columnheader">Concern</div>
+            <div role="columnheader">DIY version</div>
+            <div role="columnheader">Session primitive</div>
+          </div>
+          <div class="ledger-row" role="row">
+            <div role="cell">Live progress</div>
+            <div role="cell">Events table, SSE, reconnect cursors</div>
+            <div role="cell">Ordered session log streamed by `seq`</div>
+          </div>
+          <div class="ledger-row" role="row">
+            <div role="cell">Long-running work</div>
+            <div role="cell">Workers, leases, timeouts, cleanup loops</div>
+            <div role="cell">Bounded turns with fenced runtime leases</div>
+          </div>
+          <div class="ledger-row" role="row">
+            <div role="cell">Backend result delivery</div>
+            <div role="cell">Retry queues, signatures, dead letters</div>
+            <div role="cell">Webhook destinations projected from committed events</div>
+          </div>
+          <div class="ledger-row" role="row">
+            <div role="cell">Untrusted code</div>
+            <div role="cell">Separate sandboxes and credential routing</div>
+            <div role="cell">Brain and hands split by default</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section api-section" id="api" aria-labelledby="api-title">
+        <div class="section-heading">
+          <p class="section-kicker">API path</p>
+          <h2 id="api-title">After the substrate, integration is small.</h2>
+          <p>
+            Create or reuse an agent. Start a session with input and webhook destinations.
+            Stream events if a user is watching. Handle the callback if no one is.
+          </p>
+        </div>
+
+        <div class="code-grid">
+          <figure class="code-window">
+            <figcaption>
+              <span>Create the session</span>
+              <button type="button" data-copy="#session-code">Copy</button>
+            </figcaption>
+            <pre id="session-code"><code>const session = await oc.sessions.create({
+  agent: process.env.OPENCOMPUTER_AGENT_ID,
+  input: buildReviewTask(pr),
+  idempotencyKey: githubDeliveryId,
+  metadata: {
+    source: "github-pr-review",
+    owner, repo, pullNumber, headSha
+  },
+  destinations: [{
+    url: `${PUBLIC_URL}/webhooks/opencomputer`,
+    types: ["turn.completed"]
+  }]
+});</code></pre>
+          </figure>
+
+          <figure class="code-window">
+            <figcaption>
+              <span>Handle completion</span>
+              <button type="button" data-copy="#callback-code">Copy</button>
+            </figcaption>
+            <pre id="callback-code"><code>app.post("/webhooks/opencomputer", async (c) => {
+  const { sessionId } = await c.req.json();
+  const session = await oc.sessions.get(sessionId);
+  const route = parseMetadata(session.snapshot.metadata);
+  const result = await session.result();
+
+  await github.upsertStickyIssueComment({
+    issueNumber: route.pullNumber,
+    body: markdownFrom(result)
+  });
+});</code></pre>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section split-section" id="split" aria-labelledby="split-title">
+        <div class="section-heading">
+          <p class="section-kicker">Trust boundary</p>
+          <h2 id="split-title">Brain and hands keep credentials away from generated code.</h2>
+          <p>
+            The agent loop and model calls run separately from the files and commands the agent creates.
+            The hands sandbox can inspect and execute; model keys and platform authority stay out of it.
+          </p>
+        </div>
+        <div class="architecture-frame">
+          <img
+            src="assets/durable-agent-sessions-architecture.svg"
+            alt="Durable Agent Sessions architecture showing app, session event log, managed runtime adapter, brain sandbox, hands sandbox, model provider, and webhook delivery."
+          >
+        </div>
+      </section>
+
+      <section class="section responsibilities" aria-labelledby="responsibilities-title">
+        <div class="section-heading">
+          <p class="section-kicker">Responsibility split</p>
+          <h2 id="responsibilities-title">The app stays specific. The substrate stays reusable.</h2>
+        </div>
+        <div class="split-table">
+          <div>
+            <h3>You write</h3>
+            <ul>
+              <li>Product webhook handlers</li>
+              <li>Agent prompt and model choice</li>
+              <li>UI that renders session events</li>
+              <li>Webhook receiver and idempotent side effects</li>
+            </ul>
+          </div>
+          <div>
+            <h3>OpenComputer runs</h3>
+            <ul>
+              <li>Runtime loop and sandbox lifecycle</li>
+              <li>Ordered event log and SSE replay</li>
+              <li>Wakeups, leases, deadlines, and recovery</li>
+              <li>Signed webhook delivery and brain/hands isolation</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section launch-copy" aria-labelledby="launch-title">
+        <div class="launch-box">
+          <p class="section-kicker">Show HN summary</p>
+          <h2 id="launch-title">OpenComputer Background Agents: durable sessions for agents that keep working after the request ends.</h2>
+          <p>
+            We built a PR-review GitHub App on Durable Agent Sessions. The app is a small serverless
+            webhook handler: it fetches PR context, starts an OpenComputer session, and updates a PR
+            comment when the session completion webhook arrives. No local queue, database, resident
+            worker, or polling loop.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <img src="assets/opencomputer-logo.svg" alt="OpenComputer">
+        <p>Built on OpenComputer Durable Agent Sessions.</p>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="https://docs.opencomputer.dev/agent-sessions/overview">Docs</a>
+        <a href="https://github.com/diggerhq/demo-pr-review-agent">Example app</a>
+        <a href="https://github.com/diggerhq/oc-sessions-demos">Session demos</a>
+      </nav>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
