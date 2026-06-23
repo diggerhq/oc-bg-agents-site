@@ -368,6 +368,11 @@ pre code {
   background: var(--surface);
 }
 
+.table-wrap + .code-block,
+.code-block + .table-wrap {
+  margin-top: 1rem;
+}
+
 table {
   width: 100%;
   min-width: 680px;
