@@ -1,6 +1,6 @@
 # Agent Guide
 
-This repo is a static technical essay for OpenComputer background agents. Start with this file before editing.
+This repo is a static docs-style overview for OpenComputer Durable Agent Sessions. Start with this file before editing.
 
 ## Project Map
 
@@ -24,20 +24,18 @@ The public page should borrow concrete copy from those sources, but it should no
 
 ## Positioning
 
-The core proposition:
+The current core proposition:
 
-> Your app handles product events. OpenComputer runs the durable background-agent session.
+> Define an agent, then run resumable, steerable sessions.
 
-The current page direction is problem-first. Explain what the application would otherwise own: job state, worker lifecycle, progress streaming, callback routing, retries, dedupe, sandbox isolation, and credentials. Then show the Durable Agent Sessions handoff with concrete code.
-
-Use exact nouns: agent, session, event log, `seq`, `turn.completed`, webhook destination, brain, hands, metadata, idempotency key. Avoid broad claims about "AI workflows" or "the future of work."
+The page should stay close to the Durable Agent Sessions docs. Do not make PR review, GitHub webhooks, or a generic background-agent essay the top-level story. Use exact nouns: agent, session, event log, `seq`, `client_token`, `turn.completed`, `yield_reason`, metadata, destination, delivery, brain, hands, sandbox.
 
 ## Engineering Rules
 
 - Keep this site static and GitHub Pages friendly unless the user asks otherwise.
 - Do not introduce React, Vite, Tailwind, or a package manager for this first launch page.
 - Do not run `npm install` in sibling repos. The workspace has known untrusted old repos.
-- Keep the visual design quiet and document-like. Code blocks, tables, and the architecture diagram should carry the page.
+- Keep the visual design quiet and docs-like. Code blocks, tables, the four overview cards, and the architecture diagram should carry the page.
 - Deploy by copying only `index.html`, `styles.css`, `script.js`, and `assets/` into ignored `dist/`, then uploading `dist/` to the Cloudflare Pages project `opencomputer`.
 - Preserve accessibility: semantic HTML, keyboard-visible focus, AA contrast, reduced motion support.
 - Update [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md) if the pitch or visual direction changes.

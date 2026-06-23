@@ -1,8 +1,8 @@
 # OpenComputer Background Agents Site
 
-Static technical essay for OpenComputer background agents, focused on the Durable Agent Sessions API and the PR-review GitHub App example.
+Static docs-style overview for OpenComputer Durable Agent Sessions.
 
-The first target is a Show HN style page that reads more like a strong README than a marketing landing page: explain what is hard about background agents, then show the small API handoff.
+The first target is a Show HN style page that stays close to the existing docs: overview, built-in capabilities, quickstart shape, event model, webhooks, runtime tools, and example links.
 
 Live site: https://opencomputer.durableagents.dev/
 

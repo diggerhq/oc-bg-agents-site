@@ -2,44 +2,51 @@
 
 ## Register
 
-Technical essay.
+Docs-derived product overview.
 
 ## Users
 
-Senior engineers and technical founders evaluating whether OpenComputer Durable Agent Sessions remove real background-agent infrastructure from their application. They are skeptical of broad agent-platform claims and want exact mechanics, failure modes, and code.
+Engineers evaluating OpenComputer Durable Agent Sessions. They want the shortest useful path from concept to API shape, with links into the canonical docs.
 
 ## Product Purpose
 
-Explain why background agents are harder than a model call, then show how Durable Agent Sessions shrink the application shape. The PR-review GitHub App is the proof point: GitHub sends product events, the app creates a session, and OpenComputer owns the durable run, event log, sandboxed execution, and completion webhook.
+Present Durable Agent Sessions as a standalone OpenComputer surface:
 
-Success means a reader can explain:
+- Define an agent.
+- Start a durable, streamable, resumable session.
+- Stream and steer it with a scoped client token.
+- Receive signed webhook deliveries from committed session events.
 
-- What they would otherwise build: job state, workers, leases, progress streams, callback routing, retries, dedupe, and sandbox isolation.
-- What Durable Agent Sessions provide: session state, ordered events, metadata, limits, steering, and signed webhook delivery.
-- What still belongs in the app: product auth, prompt/task construction, and product side effects.
+The page should mostly summarize the existing docs. It is not a new narrative about PR review, GitHub webhooks, or a generalized essay on background-agent infrastructure. Product examples can appear as links after the core API is clear.
+
+## Success
+
+A reader should leave with the same mental model the docs establish:
+
+- A session is an append-only event log, pinned agent snapshot, and lifecycle status.
+- Runtime compute attaches to the session and can hibernate or restart.
+- Browser clients stream events and steer with a session token.
+- Backends receive signed webhook deliveries, including session metadata.
+- Agent file and command work happens through sandbox tools.
 
 ## Voice
 
-Concrete, technical, and plain. The writing should feel like a concise engineering note written after building the example. Lead with the problem and show specific code instead of using benefit-heavy marketing language.
+Use docs language where possible. Prefer exact nouns over explanation: agent, session, event log, `seq`, `client_token`, `turn.completed`, `yield_reason`, metadata, destination, delivery, brain, hands, sandbox.
 
-Use exact nouns: session, event log, `seq`, `turn.completed`, metadata, webhook destination, brain, hands, sandbox, idempotency key.
+Avoid invented examples in the main flow. If an example is needed, make it generic (`projectId`, `taskId`) or link to a real example repo.
 
 ## Anti-references
 
-- Generic "AI agent platform" landing pages.
-- Big hero copy with vague transformation claims.
-- Feature-card grids detached from the API.
-- Decorative gradients, oversized typography, or visual motifs that read as LLM-authored.
-- Claims that hide operational details behind adjectives.
+- PR-review GitHub App as the top-level story.
+- Broad "background agents are hard" framing.
+- New metaphors or claims not found in docs.
+- Feature-card grids that invent categories beyond the docs overview.
+- Decorative visuals that compete with code, tables, and the architecture diagram.
 
 ## Design Principles
 
-- Start with what is hard before introducing the API.
-- Prefer code, tables, and concrete flows over slogans.
-- Make every claim carry a mechanism.
-- Keep the page useful even if read like a README.
-- Treat OpenComputer as the substrate, not as a magical agent.
-
-## Accessibility & Inclusion
-
-Target WCAG AA contrast. The page should work without JavaScript, respect reduced motion, keep prose readable at mobile widths, and avoid color-only meaning.
+- Make the site feel like a public docs overview, not a launch page.
+- Replicate the durable-session overview structure before adding supporting detail.
+- Keep implementation examples short and copyable.
+- Use OpenComputer visual cues: warm neutral surface, mono nav, restrained borders, modest rounded corners.
+- Keep the page static and easy to deploy to Cloudflare Pages.

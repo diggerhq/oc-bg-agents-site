@@ -2,22 +2,24 @@
 
 ## Title
 
-Show HN: OpenComputer Background Agents, durable sessions for long-running agents
+Show HN: OpenComputer Durable Agent Sessions
 
 ## Short Description
 
-Background agents need more than a model call: a durable work record, ordered progress events, worker lifecycle, routing state, retries, dedupe, sandbox isolation, and a way to notify your backend after the original request is gone.
+OpenComputer Durable Agent Sessions let you define an agent, start a durable session, stream its event log, steer it with follow-up messages, and receive signed webhook deliveries from committed events.
 
-OpenComputer Durable Agent Sessions put that run behind one API. Your app creates a session with input, metadata, limits, and webhook destinations. OpenComputer runs the agent, records the event log, exposes progress, and sends signed webhooks from committed events.
+Built into each session:
 
-The concrete demo is a PR-review GitHub App. It runs as a small Cloudflare Worker: verify GitHub, fetch PR context, create an OpenComputer session, then update one sticky PR comment when the `turn.completed` webhook arrives. There is no app-side queue, database, polling loop, or always-on worker for the review execution.
+- Self-healing runtime.
+- Brain / hands sandboxing.
+- Live streaming and steering.
+- Reliable backend delivery.
 
-## One-Line Proposition
-
-Your app handles product events. OpenComputer runs the durable background-agent session.
+The demo site is a docs-style overview with the key API shapes and links into the full docs and examples.
 
 ## Links To Include
 
-- Site: https://diggerhq.github.io/oc-bg-agents-site/
+- Site: https://opencomputer.durableagents.dev/
+- Fallback: https://opencomputer.pages.dev/
 - Docs: https://docs.opencomputer.dev/agent-sessions/overview
-- Example: https://github.com/diggerhq/demo-pr-review-agent
+- Examples: https://github.com/diggerhq/oc-sessions-demos

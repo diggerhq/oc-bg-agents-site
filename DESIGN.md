@@ -2,30 +2,30 @@
 
 ## Format
 
-Static, single-page technical essay. No build step. The page should be easy to read, easy to quote, and credible to engineers who are comparing implementation approaches.
+Static single-page product overview, closer to docs than marketing.
 
 ## Visual Theme
 
-- Surface: neutral off-white, close to plain documentation.
-- Ink: near-black body text with muted secondary copy.
-- Accent: ordinary blue links. No large decorative color fields.
-- Components: code blocks, tables, ordered flows, and one architecture diagram.
-- Corners: square or lightly rounded only when the browser default would look rough.
+- Surface: OpenComputer warm neutral (`hsl(40 33% 97%)`).
+- Ink: near-black foreground.
+- Accent: ordinary blue links plus black primary buttons.
+- Components: the docs overview cards, code blocks, tables, callouts, and the existing architecture diagram.
+- Corners: 6px to 8px.
 
 ## Typography
 
-- Use native system fonts.
-- Use the system monospace stack for code, captions, buttons, and footer text.
-- Keep headings modest. The page should not feel like a hero landing page.
-- Body text should sit around 16px with enough line height for a technical essay.
+- Headings: Newsreader, matching the current OpenComputer site direction.
+- Body: Inter.
+- Code/nav/captions: Geist Mono.
+- Keep headings smaller than a landing-page hero. This page should read like a docs page.
 
 ## Layout
 
-- Sticky top nav with simple text links.
-- Main reading width around 880px.
-- Wide sections can expand for tables.
-- Avoid nested cards and decorative panels.
-- Code blocks are the primary visual anchors.
+- Max width follows the main site: roughly 994px.
+- Header mirrors the current OpenComputer site: `digger / opencomputer` and mono nav links.
+- Use a simple vertical document flow.
+- Use the four-card overview only where it mirrors docs. Avoid repeated card grids.
+- Code examples and tables should remain readable on mobile.
 
 ## Motion
 
@@ -33,5 +33,5 @@ No page animation. JavaScript is limited to copy buttons and active-section nav 
 
 ## Visual Assets
 
-- Reuse `assets/durable-agent-sessions-architecture.svg` from the OpenComputer docs as supporting evidence.
-- Use code and tables as the main visual system.
+- Reuse `assets/durable-agent-sessions-architecture.svg` from the OpenComputer docs.
+- Do not add decorative imagery.
