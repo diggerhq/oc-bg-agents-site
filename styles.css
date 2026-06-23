@@ -384,14 +384,12 @@ pre code {
   background: var(--surface);
 }
 
-.table-wrap + .code-block,
-.code-block + .table-wrap,
-.code-block + .code-block {
-  margin-top: 1.5rem;
-}
-
-.stacked-block {
-  margin-top: 2rem;
+.block-spacer {
+  display: block;
+  width: 100%;
+  height: 2.25rem;
+  min-height: 2.25rem;
+  pointer-events: none;
 }
 
 table {
