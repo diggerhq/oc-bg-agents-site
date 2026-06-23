@@ -371,7 +371,7 @@ pre code {
 .table-wrap + .code-block,
 .code-block + .table-wrap,
 .code-block + .code-block {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 table {
