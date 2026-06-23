@@ -238,6 +238,12 @@ p {
   margin-top: 1.8rem;
 }
 
+.intro-note {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -415,17 +421,28 @@ th:first-child {
   object-fit: contain;
 }
 
-.link-list {
+.resource-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--surface);
+  gap: 1rem;
 }
 
-.link-list a {
+.resource-group {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.resource-group h3 {
+  margin: 0;
+  padding: 0.72rem 0.9rem;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--surface-soft);
+}
+
+.resource-group a {
+  display: block;
   min-height: 3rem;
   padding: 0.75rem 0.9rem;
   border-bottom: 1px solid var(--border-soft);
@@ -434,11 +451,11 @@ th:first-child {
   text-decoration: none;
 }
 
-.link-list a:nth-child(odd) {
-  border-right: 1px solid var(--border-soft);
+.resource-group a:last-child {
+  border-bottom: 0;
 }
 
-.link-list a:hover {
+.resource-group a:hover {
   background: var(--surface-soft);
 }
 
@@ -492,12 +509,8 @@ th:first-child {
   }
 
   .feature-grid,
-  .link-list {
+  .resource-grid {
     grid-template-columns: 1fr;
-  }
-
-  .link-list a:nth-child(odd) {
-    border-right: 0;
   }
 
   h1 {
