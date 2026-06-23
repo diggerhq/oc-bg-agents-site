@@ -18,6 +18,8 @@ python3 -m http.server 4173
 
 Then open `http://localhost:4173`.
 
+If that port is busy, use any free port, for example `python3 -m http.server 4174`.
+
 No build step is needed for local editing. Refresh the browser after changing `index.html`, `styles.css`, or `script.js`.
 
 ## Cloudflare Deploy
