@@ -374,6 +374,10 @@ pre code {
   margin-top: 1.5rem;
 }
 
+.stacked-block {
+  margin-top: 2rem;
+}
+
 table {
   width: 100%;
   min-width: 680px;
