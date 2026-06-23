@@ -38,6 +38,7 @@ Use exact nouns: agent, session, event log, `seq`, `turn.completed`, webhook des
 - Do not introduce React, Vite, Tailwind, or a package manager for this first launch page.
 - Do not run `npm install` in sibling repos. The workspace has known untrusted old repos.
 - Keep the visual design quiet and document-like. Code blocks, tables, and the architecture diagram should carry the page.
+- Deploy by copying only `index.html`, `styles.css`, `script.js`, and `assets/` into ignored `dist/`, then uploading `dist/` to the Cloudflare Pages project `opencomputer`.
 - Preserve accessibility: semantic HTML, keyboard-visible focus, AA contrast, reduced motion support.
 - Update [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md) if the pitch or visual direction changes.
 
