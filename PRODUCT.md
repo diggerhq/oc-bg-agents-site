@@ -15,7 +15,7 @@ Present Durable Agent Sessions as a standalone OpenComputer surface:
 - Define an agent.
 - Start a durable, streamable, resumable session.
 - Stream and steer it with a scoped client token.
-- Receive signed webhook deliveries from committed session events.
+- Receive webhook deliveries from committed session events.
 
 The page should mostly summarize the existing docs. It is not a new narrative about PR review, GitHub webhooks, or a generalized essay on background-agent infrastructure. Product examples can appear as links after the core API is clear.
 
@@ -26,7 +26,7 @@ A reader should leave with the same mental model the docs establish:
 - A session is an append-only event log, pinned agent snapshot, and lifecycle status.
 - Runtime compute attaches to the session and can hibernate or restart.
 - Browser clients stream events and steer with a session token.
-- Backends receive signed webhook deliveries, including session metadata.
+- Backends receive retried webhook deliveries, including session metadata and optional signatures.
 - Agent file and command work happens through sandbox tools.
 
 ## Voice

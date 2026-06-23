@@ -6,7 +6,7 @@ Show HN: OpenComputer Durable Agent Sessions
 
 ## Short Description
 
-OpenComputer Durable Agent Sessions let you define an agent, start a durable session, stream its event log, steer it with follow-up messages, and receive signed webhook deliveries from committed events.
+OpenComputer Durable Agent Sessions let you define an agent, start a durable session, stream its event log, steer it with follow-up messages, and receive retried webhook deliveries from committed events.
 
 Built into each session:
 

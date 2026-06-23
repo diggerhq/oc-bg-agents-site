@@ -1,4 +1,3 @@
-const header = document.querySelector("[data-header]");
 const links = [...document.querySelectorAll(".nav-links a[href^='#']")];
 
 for (const button of document.querySelectorAll("[data-copy]")) {
@@ -6,9 +5,16 @@ for (const button of document.querySelectorAll("[data-copy]")) {
     const target = document.querySelector(button.dataset.copy);
     if (!target) return;
 
-    await navigator.clipboard.writeText(target.textContent.trim());
     const original = button.textContent;
-    button.textContent = "Copied";
+    try {
+      if (!navigator.clipboard?.writeText) {
+        throw new Error("Clipboard API unavailable");
+      }
+      await navigator.clipboard.writeText(target.textContent.trim());
+      button.textContent = "Copied";
+    } catch {
+      button.textContent = "Copy failed";
+    }
     window.setTimeout(() => {
       button.textContent = original;
     }, 1400);
@@ -44,9 +50,3 @@ if ("IntersectionObserver" in window && links.length > 0) {
     observer.observe(section);
   }
 }
-
-window.addEventListener("scroll", () => {
-  if (!header) return;
-  header.toggleAttribute("data-scrolled", window.scrollY > 12);
-}, { passive: true });
-

@@ -1,12 +1,12 @@
-# OpenComputer Background Agents Site
+# OpenComputer Durable Agent Sessions Site
 
 Static docs-style overview for OpenComputer Durable Agent Sessions.
 
 The first target is a Show HN style page that stays close to the existing docs: overview, built-in capabilities, quickstart shape, event model, webhooks, runtime tools, and example links.
 
-Live site: https://opencomputer.durableagents.dev/
+Live site: https://opencomputer.pages.dev/
 
-Fallback Pages URL: https://opencomputer.pages.dev/
+Target custom domain: https://opencomputer.durableagents.dev/
 
 ## Local Preview
 
@@ -29,12 +29,16 @@ Production deploys to the Cloudflare Pages project `opencomputer` in Mo's Cloudf
 Current URLs:
 
 - https://opencomputer.pages.dev/
-- https://opencomputer.durableagents.dev/
+- https://opencomputer.durableagents.dev/ after DNS is configured
 
 The custom hostname must be attached to the Pages project and have this DNS record:
 
 ```text
-CNAME opencomputer.durableagents.dev -> opencomputer.pages.dev
+Type: CNAME
+Name: opencomputer
+Target: opencomputer.pages.dev
+Proxy: On
+TTL: Auto
 ```
 
 Manual deploy:
@@ -58,7 +62,7 @@ Pushes to `main` deploy through [the Cloudflare Pages workflow](.github/workflow
 - [styles.css](styles.css): visual system and responsive layout.
 - [script.js](script.js): small enhancements for copy buttons and active nav.
 - [PRODUCT.md](PRODUCT.md): positioning, users, and copy principles.
-- [DESIGN.md](DESIGN.md): technical-essay visual direction.
+- [DESIGN.md](DESIGN.md): docs-style visual direction.
 - [SHOWHN.md](SHOWHN.md): draft Show HN title and body.
 - [AGENTS.md](AGENTS.md): repo guide for future agents.
 
