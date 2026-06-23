@@ -1,6 +1,6 @@
 # Agent Guide
 
-This repo is a static launch site for OpenComputer background agents. Start with this file before editing.
+This repo is a static technical essay for OpenComputer background agents. Start with this file before editing.
 
 ## Project Map
 
@@ -28,13 +28,16 @@ The core proposition:
 
 > Your app handles product events. OpenComputer runs the durable background-agent session.
 
-Use exact nouns: agent, session, event log, steer, webhook, brain, hands, metadata. Avoid broad claims about "AI workflows" or "the future of work."
+The current page direction is problem-first. Explain what the application would otherwise own: job state, worker lifecycle, progress streaming, callback routing, retries, dedupe, sandbox isolation, and credentials. Then show the Durable Agent Sessions handoff with concrete code.
+
+Use exact nouns: agent, session, event log, `seq`, `turn.completed`, webhook destination, brain, hands, metadata, idempotency key. Avoid broad claims about "AI workflows" or "the future of work."
 
 ## Engineering Rules
 
 - Keep this site static and GitHub Pages friendly unless the user asks otherwise.
 - Do not introduce React, Vite, Tailwind, or a package manager for this first launch page.
 - Do not run `npm install` in sibling repos. The workspace has known untrusted old repos.
+- Keep the visual design quiet and document-like. Code blocks, tables, and the architecture diagram should carry the page.
 - Preserve accessibility: semantic HTML, keyboard-visible focus, AA contrast, reduced motion support.
 - Update [PRODUCT.md](PRODUCT.md) and [DESIGN.md](DESIGN.md) if the pitch or visual direction changes.
 

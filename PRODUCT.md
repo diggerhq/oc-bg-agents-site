@@ -2,41 +2,44 @@
 
 ## Register
 
-brand
+Technical essay.
 
 ## Users
 
-Senior engineers and technical founders evaluating whether OpenComputer is the right substrate for background agents. They are skeptical of broad agent-platform claims and want to know what production infrastructure they stop building.
+Senior engineers and technical founders evaluating whether OpenComputer Durable Agent Sessions remove real background-agent infrastructure from their application. They are skeptical of broad agent-platform claims and want exact mechanics, failure modes, and code.
 
 ## Product Purpose
 
-Explain OpenComputer background agents through Durable Agent Sessions: define an agent, start a durable session, stream and steer it, and receive signed webhooks when results commit. The page should turn a concrete example, the PR review GitHub App, into a crisp proposition for Show HN readers.
+Explain why background agents are harder than a model call, then show how Durable Agent Sessions shrink the application shape. The PR-review GitHub App is the proof point: GitHub sends product events, the app creates a session, and OpenComputer owns the durable run, event log, sandboxed execution, and completion webhook.
 
-Success means a reader understands the object model in under a minute and can say: "My app handles product events; OpenComputer owns the long-running agent run."
+Success means a reader can explain:
 
-## Brand Personality
+- What they would otherwise build: job state, workers, leases, progress streams, callback routing, retries, dedupe, and sandbox isolation.
+- What Durable Agent Sessions provide: session state, ordered events, metadata, limits, steering, and signed webhook delivery.
+- What still belongs in the app: product auth, prompt/task construction, and product side effects.
 
-Concrete, technical, unfussy.
+## Voice
 
-The voice should read like a systems brief written by someone who built the integration. The proof is mechanics and examples, not claims about the future of agents.
+Concrete, technical, and plain. The writing should feel like a concise engineering note written after building the example. Lead with the problem and show specific code instead of using benefit-heavy marketing language.
+
+Use exact nouns: session, event log, `seq`, `turn.completed`, metadata, webhook destination, brain, hands, sandbox, idempotency key.
 
 ## Anti-references
 
 - Generic "AI agent platform" landing pages.
-- Broad manifesto copy about agents changing work.
-- The old "Beyond sandboxes" angle as the primary story.
-- Identical icon-card grids and feature lists detached from the API.
-- Copy that hides the failure model behind adjectives.
+- Big hero copy with vague transformation claims.
+- Feature-card grids detached from the API.
+- Decorative gradients, oversized typography, or visual motifs that read as LLM-authored.
+- Claims that hide operational details behind adjectives.
 
 ## Design Principles
 
-- Lead with the primitive: session, event log, steer, webhook.
-- Use the PR-review example as proof that app code can stay small.
-- Show responsibility boundaries before benefits.
-- Make each claim carry a mechanism.
-- Keep OpenComputer visible as the platform, but let background agents be the page's main object.
+- Start with what is hard before introducing the API.
+- Prefer code, tables, and concrete flows over slogans.
+- Make every claim carry a mechanism.
+- Keep the page useful even if read like a README.
+- Treat OpenComputer as the substrate, not as a magical agent.
 
 ## Accessibility & Inclusion
 
-Target WCAG AA contrast. The page should work without JavaScript, respect reduced motion, keep prose readable at mobile widths, and avoid color-only meaning in diagrams or status labels.
-
+Target WCAG AA contrast. The page should work without JavaScript, respect reduced motion, keep prose readable at mobile widths, and avoid color-only meaning.
