@@ -21,12 +21,11 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="OpenComputer Durable Agent Sessions">
+      <a class="brand" href="https://opencomputer.dev" aria-label="OpenComputer">
         <img src="assets/opencomputer-logo.svg" alt="" aria-hidden="true">
-        <span>digger / opencomputer</span>
+        <span>opencomputer</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#built-in">Built in</a>
         <a href="#quickstart">Quickstart</a>
         <a href="#events">Events</a>
         <a href="#webhooks">Webhooks</a>
@@ -45,7 +44,7 @@
         </p>
         <div class="link-row" aria-label="Primary links">
           <a class="button primary" href="https://docs.opencomputer.dev/agent-sessions/quickstart">Start with the quickstart</a>
-          <a class="button secondary" href="https://docs.opencomputer.dev/agent-sessions/overview">Read the docs</a>
+          <a class="button secondary" href="https://app.opencomputer.dev">Get API key</a>
         </div>
       </section>
 
@@ -53,15 +52,18 @@
         <div class="section-copy">
           <h2 id="built-in-title">Built into every session</h2>
           <p>
-            Sessions are for long-running or interactive agents. For a one-shot command
-            in a raw box, use a sandbox directly.
+            <a href="https://docs.opencomputer.dev/agent-sessions/sessions">Sessions</a>
+            are for long-running or interactive agents. For a one-shot command
+            in a raw box, use a
+            <a href="https://docs.opencomputer.dev/sandboxes/overview">sandbox</a>
+            directly.
           </p>
         </div>
 
         <div class="feature-grid">
           <article class="feature-card">
             <p class="card-label">runtime</p>
-            <h3>Self-healing runtime</h3>
+            <h3><a href="https://docs.opencomputer.dev/agent-sessions/runtimes">Self-healing runtime</a></h3>
             <ul>
               <li>Runtime crashes restart automatically.</li>
               <li>Idle sessions hibernate and wake on the next message.</li>
@@ -71,27 +73,27 @@
 
           <article class="feature-card">
             <p class="card-label">sandbox</p>
-            <h3>Brain / hands sandboxing</h3>
+            <h3><a href="https://docs.opencomputer.dev/agent-sessions/overview#architecture">Brain / hands sandboxing</a></h3>
             <ul>
               <li><strong>Brain</strong>: agent loop. <strong>Hands</strong>: files and commands.</li>
               <li>Untrusted work stays contained in the hands sandbox.</li>
-              <li>Your model key stays in the secret store, never in a sandbox.</li>
+              <li>Your model key stays in the <a href="https://docs.opencomputer.dev/sandboxes/secrets">secret store</a>, never in a sandbox.</li>
             </ul>
           </article>
 
           <article class="feature-card">
             <p class="card-label">stream</p>
-            <h3>Live streaming and steering</h3>
+            <h3><a href="https://docs.opencomputer.dev/agent-sessions/events">Live streaming and steering</a></h3>
             <ul>
               <li>Stream events directly from the browser with a session token.</li>
               <li>Reconnect from any <code>seq</code> without gaps.</li>
-              <li>Send follow-up messages without exposing your org key.</li>
+              <li><a href="https://docs.opencomputer.dev/agent-sessions/messaging">Send follow-up messages</a> without exposing your org key.</li>
             </ul>
           </article>
 
           <article class="feature-card">
             <p class="card-label">webhook</p>
-            <h3>Reliable backend delivery</h3>
+            <h3><a href="https://docs.opencomputer.dev/agent-sessions/webhooks">Reliable backend delivery</a></h3>
             <ul>
               <li>Deliver user-level events to your webhook.</li>
               <li>Requests are signed with Standard Webhooks.</li>
@@ -103,17 +105,27 @@
 
       <section class="section" id="quickstart" aria-labelledby="quickstart-title">
         <div class="section-copy">
-          <h2 id="quickstart-title">Smallest useful integration</h2>
+          <h2 id="quickstart-title">Build a managed coding agent in three steps</h2>
           <p>
-            Create a reusable agent, start a session with input, stream the event log,
-            then steer the session with follow-up messages.
+            The useful minimum is one reusable
+            <a href="https://docs.opencomputer.dev/agent-sessions/agents">agent</a>,
+            one durable <a href="https://docs.opencomputer.dev/agent-sessions/sessions">session</a>,
+            and one browser-safe connection to stream the
+            <a href="https://docs.opencomputer.dev/agent-sessions/events">event log</a>
+            and <a href="https://docs.opencomputer.dev/agent-sessions/messaging">steer</a>
+            follow-up work.
           </p>
         </div>
 
         <div class="step-list">
           <article class="step">
             <h3>1. Create an agent</h3>
-            <p>An agent stores reusable configuration: name, runtime, model, prompt, and model credential.</p>
+            <p>
+              An <a href="https://docs.opencomputer.dev/agent-sessions/agents">agent</a>
+              stores reusable configuration: name,
+              <a href="https://docs.opencomputer.dev/agent-sessions/runtimes">runtime</a>,
+              model, prompt, and model credential.
+            </p>
             <figure class="code-block">
               <figcaption>
                 <span>TypeScript SDK</span>
@@ -139,8 +151,10 @@ const agent = await oc.agents.create({
           <article class="step">
             <h3>2. Start a session</h3>
             <p>
-              A session starts work immediately and returns a browser-safe
-              <code>client_token</code> for that one session.
+              A <a href="https://docs.opencomputer.dev/agent-sessions/sessions">session</a>
+              starts work immediately and returns a browser-safe
+              <a href="https://docs.opencomputer.dev/agent-sessions/quickstart#2-start-a-session"><code>client_token</code></a>
+              for that one session.
             </p>
             <figure class="code-block">
               <figcaption>
@@ -169,7 +183,8 @@ const agent = await oc.agents.create({
           <article class="step">
             <h3>3. Stream and steer</h3>
             <p>
-              Use the session token in the browser. Native <code>EventSource</code>
+              Use the session token in the browser. Native
+              <a href="https://docs.opencomputer.dev/agent-sessions/quickstart#3-stream-events"><code>EventSource</code></a>
               resumes from the last event id after a dropped connection.
             </p>
             <figure class="code-block">
@@ -197,9 +212,12 @@ await live.steer("Add a completed-task filter.", {
         <div class="section-copy">
           <h2 id="sessions-title">Session lifecycle</h2>
           <p>
-            A session is the durable unit of an agent at work: an append-only event log,
+            A <a href="https://docs.opencomputer.dev/agent-sessions/sessions">session</a>
+            is the durable unit of an agent at work: an append-only
+            <a href="https://docs.opencomputer.dev/agent-sessions/events">event log</a>,
             the pinned agent snapshot, and lifecycle status. Compute attaches to it,
-            detaches when idle, and reattaches on the next message.
+            detaches when idle, and reattaches on the next
+            <a href="https://docs.opencomputer.dev/agent-sessions/messaging">message</a>.
           </p>
         </div>
 
@@ -239,7 +257,9 @@ const { lastTurn, result } = await session.result();
         <div class="section-copy">
           <h2 id="events-title">Events are the system of record</h2>
           <p>
-            Every step the agent takes is appended in order. Switch on event
+            Every step the agent takes is appended in order. In the
+            <a href="https://docs.opencomputer.dev/agent-sessions/events">events API</a>,
+            switch on event
             <code>type</code>; do not parse prose to decide whether work finished or failed.
           </p>
         </div>
@@ -279,9 +299,12 @@ turn.completed       needs_input</code></pre>
         <div class="section-copy">
           <h2 id="webhooks-title">Webhooks deliver committed events</h2>
           <p>
-            Register a destination and session events are delivered as small envelopes:
+            Register a
+            <a href="https://docs.opencomputer.dev/agent-sessions/webhooks#destinations">destination</a>
+            and session events are delivered as small envelopes:
             at least once, signed, and retried. The envelope includes the session
-            <code>metadata</code> you set at create time.
+            <a href="https://docs.opencomputer.dev/agent-sessions/api-reference#sessions"><code>metadata</code></a>
+            you set at create time.
           </p>
         </div>
 
@@ -311,8 +334,24 @@ turn.completed       needs_input</code></pre>
         <div class="callout">
           <p>
             Dedupe on <code>webhook-id</code>, which equals the event id. Verify the raw
-            request body with a Standard Webhooks library before parsing JSON. A delivery
+            request body with a
+            <a href="https://www.standardwebhooks.com">Standard Webhooks</a>
+            library before parsing JSON. A
+            <a href="https://docs.opencomputer.dev/agent-sessions/webhooks#deliveries">delivery</a>
             succeeds on any HTTP <code>2xx</code>.
+          </p>
+        </div>
+
+        <div class="callout">
+          <p>
+            In the <a href="https://github.com/diggerhq/demo-pr-review-agent">PR-review agent repo</a>,
+            the app creates a session with GitHub routing data in <code>metadata</code>.
+            When OpenComputer sends the completion webhook, that metadata is in the envelope,
+            so the app can update the right pull request without a database, local queue,
+            polling loop, or always-on worker. That is the point of the example:
+            you can build an almost frontend-only, serverless app around a durable agent
+            because OpenComputer owns the stateful session machinery. Metadata in webhooks
+            is one example of that pattern.
           </p>
         </div>
       </section>
@@ -321,8 +360,10 @@ turn.completed       needs_input</code></pre>
         <div class="section-copy">
           <h2 id="tools-title">Runtime tools</h2>
           <p>
-            The <code>claude</code> and <code>codex</code> runtimes act through a fixed
-            set of tools against the session sandbox. The agent has no direct filesystem,
+            The <a href="https://docs.opencomputer.dev/agent-sessions/runtimes"><code>claude</code> and <code>codex</code> runtimes</a>
+            act through a fixed set of
+            <a href="https://docs.opencomputer.dev/agent-sessions/runtime-tools">tools</a>
+            against the session sandbox. The agent has no direct filesystem,
             shell, or network of its own.
           </p>
         </div>
@@ -350,7 +391,8 @@ turn.completed       needs_input</code></pre>
           <p>
             To work on a public repository, include the repo URL and branch or commit in
             the task text, then have the agent clone it with <code>bash</code>. Prepared
-            workspaces and private-repo access are coming soon.
+            <a href="https://docs.opencomputer.dev/agent-sessions/workspaces">workspaces</a>
+            and private-repo access are coming soon.
           </p>
         </div>
       </section>
@@ -361,7 +403,8 @@ turn.completed       needs_input</code></pre>
           <p>
             Your app starts, streams, and steers a durable event-log session.
             The managed runtime drives the agent loop and acts through the hands sandbox.
-            User-level events are delivered to your webhook.
+            User-level events are delivered to your
+            <a href="https://docs.opencomputer.dev/agent-sessions/webhooks">webhook</a>.
           </p>
         </div>
         <figure class="diagram">
@@ -376,7 +419,8 @@ turn.completed       needs_input</code></pre>
         <div class="section-copy">
           <h2 id="examples-title">Examples and reference</h2>
           <p>
-            The docs are the primary reference. The examples show complete applications
+            The <a href="https://docs.opencomputer.dev/agent-sessions/overview">docs</a>
+            are the primary reference. The examples show complete applications
             built on the same session, event, steering, and webhook primitives.
           </p>
         </div>
@@ -386,14 +430,14 @@ turn.completed       needs_input</code></pre>
           <a href="https://docs.opencomputer.dev/agent-sessions/sessions">Session lifecycle</a>
           <a href="https://docs.opencomputer.dev/agent-sessions/webhooks">Webhooks</a>
           <a href="https://docs.opencomputer.dev/agent-sessions/runtime-tools">Runtime tools</a>
-          <a href="https://github.com/diggerhq/oc-sessions-demos">Session demos</a>
-          <a href="https://github.com/diggerhq/demo-pr-review-agent">PR-review example</a>
+          <a href="https://github.com/diggerhq/oc-sessions-demos">App-building agent repo</a>
+          <a href="https://github.com/diggerhq/demo-pr-review-agent">PR-review agent repo</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>&copy; 2026 opencomputer by digger</span>
+      <span>&copy; 2026 opencomputer</span>
       <a href="https://docs.opencomputer.dev">Docs</a>
       <a href="https://github.com/diggerhq/opencomputer">GitHub</a>
       <a href="https://app.opencomputer.dev">Try now</a>

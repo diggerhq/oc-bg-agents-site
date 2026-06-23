@@ -22,7 +22,7 @@ Static single-page product overview, closer to docs than marketing.
 ## Layout
 
 - Max width follows the main site: roughly 994px.
-- Header mirrors the current OpenComputer site: `digger / opencomputer` and mono nav links.
+- Header uses `opencomputer` as the parent link and mono nav links.
 - Use a simple vertical document flow.
 - Use the four-card overview only where it mirrors docs. Avoid repeated card grids.
 - Code examples and tables should remain readable on mobile.

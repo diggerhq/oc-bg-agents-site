@@ -200,6 +200,10 @@ h3 {
   line-height: 1.35;
 }
 
+.feature-card h3 a {
+  color: inherit;
+}
+
 p {
   max-width: var(--measure);
   margin: 0;
