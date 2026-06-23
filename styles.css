@@ -164,6 +164,22 @@ main {
   font-size: 0.78rem;
 }
 
+.preview-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.6rem;
+  margin: 0 0 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.28rem 0.5rem;
+}
+
 h1,
 h2,
 h3,
